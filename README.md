@@ -19,7 +19,7 @@ Once installed, ask ChatGPT to perform a task supported by the Skill. For exampl
 
 ## What's Included
 
-The release archive contains one Skill folder with its `SKILL.md`, supported metadata, and any required reference files. Development files remain in this repository and are not included in `skill.zip`.
+The release archive contains the plugin manifest and the Obsidian Notes Skill. Development files remain in this repository and are not included in `skill.zip`.
 
 ## Updates
 

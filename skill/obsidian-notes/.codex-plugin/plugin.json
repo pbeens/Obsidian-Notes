@@ -1,0 +1,18 @@
+{
+  "name": "obsidian-notes",
+  "version": "1.0.0",
+  "description": "Turn messy or complex source material into clear, structured Obsidian-compatible Markdown notes.",
+  "author": {
+    "name": "Peter Beens",
+    "url": "https://github.com/pbeens"
+  },
+  "homepage": "https://github.com/pbeens/Obsidian-Notes",
+  "repository": "https://github.com/pbeens/Obsidian-Notes",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Obsidian Notes",
+    "shortDescription": "Create structured Obsidian-compatible Markdown notes.",
+    "defaultPrompt": "Turn the supplied source material into clear, structured Obsidian notes."
+  }
+}

@@ -58,10 +58,13 @@ def validate_source() -> tuple[str, str]:
     """
     manifest = SKILL_DIR / "SKILL.md"
     metadata = SKILL_DIR / "agents" / "openai.yaml"
+    plugin_manifest = SKILL_DIR / ".codex-plugin" / "plugin.json"
     if not manifest.is_file():
         fail(f"Missing {manifest.relative_to(ROOT)}.")
     if not metadata.is_file():
         fail(f"Missing {metadata.relative_to(ROOT)}.")
+    if not plugin_manifest.is_file():
+        fail(f"Missing {plugin_manifest.relative_to(ROOT)}.")
 
     metadata_text = metadata.read_text(encoding="utf-8")
     required_metadata = (
@@ -72,6 +75,11 @@ def validate_source() -> tuple[str, str]:
     )
     if any(field not in metadata_text for field in required_metadata):
         fail("agents/openai.yaml is missing required interface metadata.")
+
+    plugin_text = plugin_manifest.read_text(encoding="utf-8")
+    required_plugin_fields = ('"name"', '"version"', '"description"', '"skills"', '"interface"')
+    if any(field not in plugin_text for field in required_plugin_fields):
+        fail(".codex-plugin/plugin.json is missing required plugin metadata.")
 
     name, description = parse_frontmatter(manifest)
     body = manifest.read_text(encoding="utf-8").lower()
@@ -91,7 +99,9 @@ def files_to_package() -> list[Path]:
     """
     files = []
     for path in sorted(SKILL_DIR.rglob("*")):
-        if not path.is_file() or (path.name == "README.md" and path.parent.name == "references"):
+        if not path.is_file():
+            continue
+        if path.name == ".DS_Store" or (path.name == "README.md" and path.parent.name == "references"):
             continue
         if "__pycache__" in path.parts or path.suffix in {".pyc", ".pyo"}:
             continue
@@ -108,7 +118,18 @@ def build_archive(files: list[Path]) -> None:
         ARCHIVE.unlink()
     with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for path in files:
-            archive.write(path, f"{SKILL_NAME}/{path.relative_to(SKILL_DIR).as_posix()}")
+            relative = path.relative_to(SKILL_DIR).as_posix()
+            if relative == ".codex-plugin/plugin.json":
+                archive_name = f"{SKILL_NAME}/{relative}"
+            elif relative == "SKILL.md":
+                archive_name = f"{SKILL_NAME}/skills/{SKILL_NAME}/SKILL.md"
+            elif relative.startswith("agents/"):
+                archive_name = f"{SKILL_NAME}/skills/{SKILL_NAME}/{relative}"
+            elif relative.startswith("references/"):
+                archive_name = f"{SKILL_NAME}/skills/{SKILL_NAME}/{relative}"
+            else:
+                fail(f"Unsupported package path: {relative}")
+            archive.write(path, archive_name)
 
     if ARCHIVE.stat().st_size > MAX_ZIP_BYTES:
         fail("ZIP exceeds the 50 MB upload limit.")
@@ -118,9 +139,12 @@ def build_archive(files: list[Path]) -> None:
             fail("ZIP must contain exactly one top-level Skill folder.")
         if sum(info.file_size for info in archive.infolist()) > MAX_UNCOMPRESSED_BYTES:
             fail("Uncompressed Skill contents exceed the 25 MB limit.")
-        if names.count(f"{SKILL_NAME}/SKILL.md") != 1:
-            fail("ZIP must contain exactly one top-level SKILL.md.")
-        forbidden = ("README.md", "tasks.md", "AGENTS.md", "source/", ".git/")
+        skill_manifest = f"{SKILL_NAME}/skills/{SKILL_NAME}/SKILL.md"
+        if names.count(skill_manifest) != 1:
+            fail("ZIP must contain exactly one skill SKILL.md.")
+        if f"{SKILL_NAME}/.codex-plugin/plugin.json" not in names:
+            fail("ZIP must contain a .codex-plugin/plugin.json manifest.")
+        forbidden = ("README.md", "tasks.md", "AGENTS.md", "source/", ".git/", ".DS_Store")
         if any(any(part in name for part in forbidden) for name in names):
             fail("ZIP contains repository development files.")
 

@@ -1,3 +1,16 @@
+## 2026-10-19 — Fix rejected plugin archive
+
+- Prompt summary: Diagnose why the initial `skill.zip` was rejected by ChatGPT and update the package to include the required plugin manifest and `skills/<skill-name>/SKILL.md` layout.
+- Hostname: m4-mini
+- Active agent: Codex
+- Technical context: The archive upload reported “Couldn't add plugin. Try again.”; the corrected archive now uses `.codex-plugin/plugin.json` and a nested skills directory.
+
+## 2026-10-19 — Draft version 1.0.0 release description
+
+- Prompt summary: Provide a concise GitHub Release description for the initial Obsidian Notes Skill release, version 1.0.0.
+- Hostname: m4-mini
+- Active agent: Codex
+
 ## 2026-10-19 — Simplify public README
 
 - Prompt summary: Remove development-process and internal workflow content from the main README so it focuses only on downloading and installing the Skill ZIP.
