@@ -1,3 +1,15 @@
+## 2026-10-19 — Add platform-specific usage commands
+
+- Prompt summary: Update the README with the Claude `/obsidian-notes` and ChatGPT `@obsidian-notes` invocation commands.
+- Hostname: m4-mini
+- Active agent: Codex
+
+## 2026-10-19 — Add Claude installation instructions
+
+- Prompt summary: Update the public README to explain that the Skill ZIP can also be installed in Claude through the supplied custom plugins URL.
+- Hostname: m4-mini
+- Active agent: Codex
+
 ## 2026-10-19 — Add required plugin listing metadata and icons
 
 - Prompt summary: Investigate continued rejection of the corrected plugin archive and add the required Codex listing metadata and icon assets.

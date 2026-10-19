@@ -2,7 +2,7 @@
 
 An instruction-based ChatGPT Skill for turning supplied material into clear, structured Obsidian-compatible Markdown notes.
 
-## Installation
+## Installation in ChatGPT
 
 1. Download `skill.zip` from the [latest GitHub Release](https://github.com/pbeens/Obsidian-Notes/releases).
 2. Open the [ChatGPT Plugins page](https://chatgpt.com/plugins).
@@ -11,9 +11,22 @@ An instruction-based ChatGPT Skill for turning supplied material into clear, str
 
 Availability and upload permissions depend on your ChatGPT plan and workspace settings.
 
+## Installation in Claude
+
+1. Open [Claude plugin settings](https://claude.ai/customize/plugins).
+2. Upload the downloaded `skill.zip` as a custom plugin.
+3. Enable the plugin and start using it in Claude.
+
+Availability depends on your Claude account and plan.
+
 ## Usage
 
-Once installed, ask ChatGPT to perform a task supported by the Skill. For example:
+Once installed, invoke the Skill using the platform-specific command:
+
+- Claude: `/obsidian-notes`
+- ChatGPT: `@obsidian-notes`
+
+Then provide the task. For example:
 
 > Convert this transcript into comprehensive Obsidian notes.
 
@@ -23,7 +36,7 @@ The release archive contains the plugin manifest and the Obsidian Notes Skill. D
 
 ## Updates
 
-Download the newest release and upload the updated Skill using the current ChatGPT workflow.
+Download the newest release and upload the updated Skill using the appropriate ChatGPT or Claude workflow.
 
 ## Licence
 
