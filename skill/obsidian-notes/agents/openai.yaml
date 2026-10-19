@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian Notes"
+  short_description: "Create structured Obsidian-compatible Markdown notes."
+  default_prompt: "Turn the supplied source material into clear, structured Obsidian notes."
