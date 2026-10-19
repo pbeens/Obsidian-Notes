@@ -12,7 +12,16 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Obsidian Notes",
-    "shortDescription": "Create structured Obsidian-compatible Markdown notes.",
-    "defaultPrompt": "Turn the supplied source material into clear, structured Obsidian notes."
+    "shortDescription": "Create Obsidian notes.",
+    "longDescription": "Turn messy or complex source material into clear, structured Obsidian-compatible Markdown notes with headings, callouts, explanations, and consistent formatting.",
+    "developerName": "Peter Beens",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Turn this transcript into clear Obsidian notes.",
+      "Convert this document into a structured Obsidian note."
+    ],
+    "composerIcon": "./assets/obsidian-notes.svg",
+    "logo": "./assets/obsidian-notes.svg"
   }
 }

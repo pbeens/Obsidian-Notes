@@ -127,6 +127,8 @@ def build_archive(files: list[Path]) -> None:
                 archive_name = f"{SKILL_NAME}/skills/{SKILL_NAME}/{relative}"
             elif relative.startswith("references/"):
                 archive_name = f"{SKILL_NAME}/skills/{SKILL_NAME}/{relative}"
+            elif relative.startswith("assets/"):
+                archive_name = f"{SKILL_NAME}/{relative}"
             else:
                 fail(f"Unsupported package path: {relative}")
             archive.write(path, archive_name)

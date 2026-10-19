@@ -1,3 +1,10 @@
+## 2026-10-19 — Add required plugin listing metadata and icons
+
+- Prompt summary: Investigate continued rejection of the corrected plugin archive and add the required Codex listing metadata and icon assets.
+- Hostname: m4-mini
+- Active agent: Codex
+- Technical context: Official documentation requires longDescription, developerName, category, capabilities, composerIcon, and logo for Codex package validation.
+
 ## 2026-10-19 — Fix rejected plugin archive
 
 - Prompt summary: Diagnose why the initial `skill.zip` was rejected by ChatGPT and update the package to include the required plugin manifest and `skills/<skill-name>/SKILL.md` layout.

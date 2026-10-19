@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Obsidian Notes</title>
+  <desc id="desc">A dark note card with a purple crystal mark.</desc>
+  <rect width="256" height="256" rx="48" fill="#211936"/>
+  <path d="M72 61h86l26 27v107H72z" fill="#f4f0ff"/>
+  <path d="M158 61v29h26" fill="#d8c9ff"/>
+  <path d="M104 105h62M104 132h62M104 159h42" stroke="#8065d8" stroke-width="12" stroke-linecap="round"/>
+  <path d="m73 102 18-31 20 27-20 31z" fill="#9d7cff"/>
+  <path d="m91 71 18 27-18 31-18-27z" fill="#6f4acb"/>
+</svg>

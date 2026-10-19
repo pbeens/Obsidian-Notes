@@ -70,7 +70,7 @@
 
 - Official documentation confirms a Skill bundle is a single top-level folder containing exactly one `SKILL.md`; current upload guidance is through ChatGPT Skills → Create → Upload from your computer.
 - The source instructions are now complete and have been converted into the final Skill.
-- The build archive is a plugin archive containing `.codex-plugin/plugin.json` and the Skill under `skills/obsidian-notes/`.
+- The build archive is a plugin archive containing `.codex-plugin/plugin.json`, required listing metadata/icons, and the Skill under `skills/obsidian-notes/`.
 - Local validation passed; interactive ChatGPT testing and publication remain outstanding.
 - The installation instructions link directly to `https://chatgpt.com/plugins` and use the **Add → Upload plugin archive** workflow.
 
